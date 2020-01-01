@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Deps.kotlin_jdk
+    implementation SupportLibraries.appcompat
+    implementation SupportLibraries.core
+
+    // Reactive and Lifecycle
+    implementation Deps.rx_java
+    implementation Deps.rx_android
+    implementation Deps.rx_bind
+    implementation Deps.rx_kotlin
+    implementation Deps.lifecycle_ext
+    kapt Deps.lifecycle_compiler
+
+    testImplementation TestDeps.junit
+    androidTestImplementation TestDeps.arch_testing
+    androidTestImplementation TestDeps.support_test
+    androidTestImplementation TestDeps.espresso_core
+}

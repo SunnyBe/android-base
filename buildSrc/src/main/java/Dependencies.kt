@@ -27,6 +27,7 @@ object Versions {
     val android_arch = "1.1.1"
     val lifecycle_version = "2.1.0"
     val navigation_architecture = "2.0.0"
+    val room_version = "2.1.0-alpha01"
 
     val koin_version = "2.0.1"
     val nav_verison = "2.1.0"
@@ -54,7 +55,6 @@ object Versions {
     val mockito_core = "2.28.2"
     val support_test = "1.0.2"
     val robo_electric = "1.0.0"
-
 }
 
 object ClassPaths {
@@ -74,11 +74,12 @@ object Deps {
     val retrofix_rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     val retrofit_http_logger = "com.squareup.okhttp3:logging-interceptor:${Versions.retrofit_logger}"
 
-    val room = "android.arch.persistence.room:runtime:${Versions.android_arch}"
+    val room = "androidx.room:room-runtime:${Versions.room_version}"
+    val room_compiler = "androidx.room:room-compiler:${Versions.room_version}"
+    val room_rxjava = "androidx.room:room-rxjava2:${Versions.room_version}"
     val lifecycle_runtime = "android.arch.lifecycle:runtime:${Versions.lifecycle_version}"
     val lifecycle_ext = "android.arch.lifecycle:extensions:${Versions.lifecycle_version}"
     val lifecycle_compiler = "android.arch.lifecycle:compiler:${Versions.lifecycle_version}"
-
 
     val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
     var glide = "com.github.bumptech.glide:glide:${Versions.glide}"
@@ -87,6 +88,7 @@ object Deps {
     val rx_java = "io.reactivex.rxjava2:rxjava:${Versions.rx_java}"
     val rx_bind = "com.jakewharton.rxbinding:rxbinding:0.4.0"
     val rx_kotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rx_kotlin}"
+    val rx_compiler = "android.arch.persistence.room:compiler:${Versions.rx_java}"
 
     val calligraphy = "uk.co.chrisjenx:calligraphy:${Versions.calligraphy}"
     val pager_indicator = "com.romandanylyk:pageindicatorview:${Versions.pager_indicator}"

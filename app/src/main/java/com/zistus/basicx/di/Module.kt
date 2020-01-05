@@ -12,6 +12,7 @@ import com.zistus.data.datasources.db.room.DatabaseSource
 import com.zistus.data.datasources.db.room.DatabaseSourceImpl
 import com.zistus.data.datasources.db.room.dao.BaseDao
 import com.zistus.data.repository.BaseRepositoryImpl
+import com.zistus.domain.repository.BaseRepository
 import com.zistus.domain.usecases.BaseUseCase
 import com.zistus.domain.usecases.BaseUseCaseImp
 import okhttp3.OkHttpClient
@@ -24,7 +25,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 val viewModelModule = module {
-    fun provideBaseUseCase(baseRepository: BaseRepositoryImpl): BaseUseCase = BaseUseCaseImp(baseRepository = baseRepository)
+    fun provideBaseUseCase(baseRepository: BaseRepository): BaseUseCase = BaseUseCaseImp(baseRepository = baseRepository)
 
     single { provideBaseUseCase(get()) }
     viewModel {
@@ -36,14 +37,16 @@ val apiModule = module {
     fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
+    fun provideApiSource(apiService: ApiService): ApiSource = ApiSourceImp(apiService = apiService)
 
     single { provideApiService(get()) }
+    single { provideApiSource(get()) }
 }
 
 val retrofitModule = module {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl(BuildConfig.BUILD_TYPE)
+            .baseUrl(BuildConfig.BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
@@ -71,16 +74,14 @@ val roomModule = module {
     fun provideBaseDao(myDb: MyDatabase) = myDb.baseDao()
     fun provideDatabaseSource(baseDao: BaseDao): DatabaseSource = DatabaseSourceImpl(baseDao)
 
+    single { provideMyDatabase(androidContext()) }
     single { provideBaseDao(get()) }
     single { provideDatabaseSource(get()) }
-    single { provideMyDatabase(androidContext()) }
 }
 
 val repositoryModule = module {
-    fun provideApiSource(apiService: ApiService): ApiSource = ApiSourceImp(apiService = apiService)
 
-    single { provideApiSource(get()) }
-    single {
-        BaseRepositoryImpl(get(), get())
-    }
+    fun provideBaseRepository(apiSource: ApiSource, databaseSource: DatabaseSource): BaseRepository = BaseRepositoryImpl(apiSource = apiSource, databaseSource = databaseSource)
+
+    single { provideBaseRepository(get(), get()) }
 }

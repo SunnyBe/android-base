@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 sealed class Model {
     @Entity(tableName = "test")
     data class TestItem(
-        @PrimaryKey val id: Int,
+        @PrimaryKey val id: Long,
         val myId: String
     ): Model()
 }

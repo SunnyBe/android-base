@@ -5,5 +5,5 @@ import io.reactivex.Single
 
 interface DatabaseSource {
 
-    fun insertItem(item: Entity.TestObject): Single<Int>
+    fun insertItem(item: Entity.TestObject): Single<Long>
 }

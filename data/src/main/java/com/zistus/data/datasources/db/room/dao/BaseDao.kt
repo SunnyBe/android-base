@@ -1,14 +1,13 @@
 package com.zistus.data.datasources.db.room.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.zistus.data.datasources.db.room.model.Model
 import io.reactivex.Single
 
 @Dao
 interface BaseDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addItem(item: Model.TestItem): Single<Int>
+    @Insert
+    fun addItem(item: Model.TestItem): Long
 
     @Query("select * from test")
     fun allItem(): Single<List<Model.TestItem>>

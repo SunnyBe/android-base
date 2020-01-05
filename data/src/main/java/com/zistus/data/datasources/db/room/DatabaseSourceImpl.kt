@@ -7,7 +7,7 @@ import io.reactivex.Single
 
 class DatabaseSourceImpl(private val baseDao: BaseDao): DatabaseSource {
 
-    override fun insertItem(item: Entity.TestObject): Single<Int> {
-        return baseDao.addItem(Model.TestItem(0, item.id))
+    override fun insertItem(item: Entity.TestObject): Single<Long> {
+        return Single.just(baseDao.addItem(Model.TestItem(0, item.id)))
     }
 }

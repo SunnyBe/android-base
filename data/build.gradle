@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
-apply plugin: 'kotlin-kapt'
-
 apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -48,6 +48,9 @@ dependencies {
     implementation Deps.retrofit_http_logger
 
     implementation Deps.room
+    kapt Deps.room_compiler
+    kapt Deps.room_rxjava
+    implementation Deps.room_rxjava
 
     testImplementation TestDeps.junit
     androidTestImplementation TestDeps.arch_testing

@@ -7,7 +7,5 @@ import com.zistus.data.datasources.db.room.model.Model
 
 @Database(entities = [Model.TestItem::class], version = 1, exportSchema = true)
 abstract class MyDatabase: RoomDatabase() {
-
     abstract fun baseDao(): BaseDao
-
 }

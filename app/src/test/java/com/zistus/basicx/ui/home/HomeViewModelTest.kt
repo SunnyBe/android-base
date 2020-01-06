@@ -4,9 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.zistus.basicx.mock
 import com.zistus.basicx.whenever
-import com.zistus.domain.usecases.BaseUseCase
 import com.zistus.domain.state.DataState
 import com.zistus.domain.state.Success
+import com.zistus.domain.usecases.BaseUseCase
 import io.reactivex.Single
 import junit.framework.Assert.assertEquals
 import org.junit.Before

@@ -8,17 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.zistus.basicx.R
 import com.zistus.basicx.ui.BaseFragment
-import com.zistus.domain.entity.Entity
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class HomeFragment : BaseFragment() {
-    val homeViewModel: HomeViewModel by viewModel<HomeViewModel>()
+    private val homeViewModel: HomeViewModel by viewModel<HomeViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 //        return inflater.inflate(R.layout.fragment_home, container, false)
@@ -33,14 +27,6 @@ class HomeFragment : BaseFragment() {
         }
 
         secondButton?.setOnClickListener {
-            GlobalScope.launch(Dispatchers.Main) {
-                val user = async(Dispatchers.IO) { homeViewModel.updateTest() }
-                displayResult(user.await())
-            }
         }
     }
-    private fun displayResult(user: Entity.TestObject) {
-        Timber.e(user.id)
-    }
-
 }

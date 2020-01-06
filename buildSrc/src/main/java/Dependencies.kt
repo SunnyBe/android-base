@@ -39,12 +39,16 @@ object Versions {
     val constrainst_layout = "1.1.3"
     val appcompat = "1.1.0"
 
+    val timber_version = "4.7.1"
+    val easy_pref_version = "1.9.0"
+
     val lottie = "2.5.1"
     val glide = "4.6.1"
     val rx_android = "2.1.1"
     val rx_java = "2.2.15"
     val rx_kotlin = "2.3.0"
 
+    val coroutine_version = "1.3.0"
     val calligraphy = "2.3.0"
     val pager_indicator = "1.0.3"
     val biometric_version = "1.0.0"
@@ -90,6 +94,10 @@ object Deps {
     val rx_kotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rx_kotlin}"
     val rx_compiler = "android.arch.persistence.room:compiler:${Versions.rx_java}"
 
+    var coroutine =  "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine_version}"
+    var coroutine_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutine_version}"
+
+
     val calligraphy = "uk.co.chrisjenx:calligraphy:${Versions.calligraphy}"
     val pager_indicator = "com.romandanylyk:pageindicatorview:${Versions.pager_indicator}"
     val biometric = "androidx.biometric:biometric:${Versions.biometric_version}"
@@ -100,6 +108,10 @@ object Deps {
 
     val nav_fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.nav_verison}"
     val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.nav_verison}"
+
+    val timber = "com.jakewharton.timber:timber:${Versions.timber_version}"
+
+    val easyPref = "com.pixplicity.easyprefs:library:${Versions.easy_pref_version}"
 }
 
 

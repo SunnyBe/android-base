@@ -5,6 +5,8 @@ import com.zistus.basicx.R
 import com.zistus.basicx.ui.BaseActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
+
+
 class MainActivity: BaseActivity() {
 
     val homeViewModel: HomeViewModel by viewModel<HomeViewModel>()

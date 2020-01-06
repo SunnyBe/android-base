@@ -5,4 +5,5 @@ import io.reactivex.Single
 
 interface BaseUseCase {
     fun getTestObject(): Single<Entity.TestObject>
+    fun getCoroutTest(): Entity.TestObject
 }

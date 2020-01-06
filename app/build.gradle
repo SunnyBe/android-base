@@ -32,6 +32,9 @@ android {
     testOptions {
         unitTests.includeAndroidResources = true
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -56,10 +59,16 @@ dependencies {
     implementation Deps.lifecycle_ext
     kapt Deps.lifecycle_compiler
 
+    implementation Deps.timber
+    implementation Deps.easyPref
+
     // DI with Koin
     implementation Deps.koin
     implementation Deps.koin_scope
     implementation Deps.koin_view_model
+
+    implementation Deps.coroutine
+    implementation Deps.coroutine_android
 
     implementation Deps.retrofit
     implementation Deps.retrofit_gson_converter

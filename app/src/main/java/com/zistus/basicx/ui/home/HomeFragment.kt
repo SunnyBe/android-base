@@ -4,16 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.zistus.basicx.R
 import com.zistus.basicx.ui.BaseFragment
+import com.zistus.domain.entity.Entity
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class HomeFragment : BaseFragment() {
     val homeViewModel: HomeViewModel by viewModel<HomeViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+//        return inflater.inflate(R.layout.fragment_home, container, false)
+        var binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_home, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -21,5 +31,16 @@ class HomeFragment : BaseFragment() {
         firstButton?.setOnClickListener {
             homeViewModel.fetchUser(30)
         }
+
+        secondButton?.setOnClickListener {
+            GlobalScope.launch(Dispatchers.Main) {
+                val user = async(Dispatchers.IO) { homeViewModel.updateTest() }
+                displayResult(user.await())
+            }
+        }
     }
+    private fun displayResult(user: Entity.TestObject) {
+        Timber.e(user.id)
+    }
+
 }

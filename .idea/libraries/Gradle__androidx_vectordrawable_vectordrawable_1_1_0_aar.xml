@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.vectordrawable:vectordrawable:1.1.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/43f961c9f5637ee60df5432c631f2c05/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/43f961c9f5637ee60df5432c631f2c05/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d090c3b9a2a724e948134e6750aa6c56/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d090c3b9a2a724e948134e6750aa6c56/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

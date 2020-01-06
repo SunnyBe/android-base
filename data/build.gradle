@@ -42,6 +42,8 @@ dependencies {
     implementation Deps.lifecycle_ext
     kapt Deps.lifecycle_compiler
 
+    implementation Deps.timber
+
     implementation Deps.retrofit
     implementation Deps.retrofit_gson_converter
     implementation Deps.retrofix_rxjava2
@@ -51,6 +53,9 @@ dependencies {
     kapt Deps.room_compiler
     kapt Deps.room_rxjava
     implementation Deps.room_rxjava
+
+    implementation Deps.coroutine
+    implementation Deps.coroutine_android
 
     testImplementation TestDeps.junit
     androidTestImplementation TestDeps.arch_testing
